@@ -8,3 +8,7 @@ Ames$Date <- paste(Ames$Mo.Sold, Ames$Yr.Sold, sep = " ")
 AmesCom<- left_join(Ames, corn, by="Date")
 AmesCom<- left_join(AmesCom, pork, by="Date")
 AmesCom<- left_join(AmesCom, soy, by="Date")
+
+
+
+#test
