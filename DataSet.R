@@ -9,5 +9,16 @@ AmesCom<- left_join(Ames, corn, by="Date")
 AmesCom<- left_join(AmesCom, pork, by="Date")
 AmesCom<- left_join(AmesCom, soy, by="Date")
 
+#adding dates
+AmesCom<- left_join(AmesCom, corn, by="Date")
 
+AmesCom$indexcom <- AmesCom$CornPrice + AmesCom$SoyPrice +AmesCom$PorkPrice
+
+AmesCom$indexcomchng <- AmesCom$CoreChange... + AmesCom$SoyChange... +AmesCom$PorkChange...
+
+ggplot(data = AmesCom, aes(x = fulldate, y = indexcom)) + geom_point()  
++ stat_smooth(method = lm) + labs(title = "")
+
+ggplot(data = AmesCom, aes(x = fulldate, y = indexcomchng)) + geom_point()  
++ stat_smooth(method = lm) + labs(title = "")
 
