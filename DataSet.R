@@ -11,4 +11,3 @@ AmesCom<- left_join(AmesCom, soy, by="Date")
 
 
 
-#test
