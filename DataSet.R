@@ -5,7 +5,7 @@ pork<-read.csv("~/Desktop/Spring 2018/MAT295/FinalProject/pork.csv")
 soy<-read.csv("~/Desktop/Spring 2018/MAT295/FinalProject/soybeans.csv")
 
 Ames$Date <- paste(Ames$Mo.Sold, Ames$Yr.Sold, sep = " ")
-AmesCom<- left_join(Ames, corn, by="Date")
+AmesCom<- left_join(AmesCom, corn, by="Date")
 AmesCom<- left_join(AmesCom, pork, by="Date")
 AmesCom<- left_join(AmesCom, soy, by="Date")
 
@@ -21,4 +21,21 @@ ggplot(data = AmesCom, aes(x = fulldate, y = indexcom)) + geom_point()
 
 ggplot(data = AmesCom, aes(x = fulldate, y = indexcomchng)) + geom_point()  
 + stat_smooth(method = lm) + labs(title = "")
+
+
+lmtest <- lm(SalePrice~CornPrice,data=AmesCom)
+summary(lmtest)
+
+lmtest1 <- lm(SalePrice~SoyPrice,data=AmesCom)
+summary(lmtest1)
+
+lmtest2 <- lm(SalePrice~newcomchg,data=AmesCom)
+summary(lmtest2)
+
+ggplot(data = trydate, aes(x = Group.1, y = x)) + geom_point()  
++ stat_smooth(method = lm) + labs(title = "")
+
+trydate <- aggregate(AmesCom[, 82], list(AmesCom$Date), mean)
+
+
 
